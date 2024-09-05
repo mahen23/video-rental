@@ -1,0 +1,32 @@
+# docker-compose.yml
+
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: videorental_app
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=vidrental
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+
+  db:
+    image: mysql:5.7
+    container_name: vidrental_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: vidrental
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
