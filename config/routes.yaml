@@ -3,3 +3,12 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+test_rentals:
+    methods: [GET]
+    path: /test/rentals
+    controller: App\Controller\TestController::testRentals
+
+test_movies:
+    path: /test/movies
+    controller: App\Controller\TestController::testMovies
